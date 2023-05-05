@@ -2,9 +2,15 @@
     <div class="card card-body shadow-sm">
         <h3>Journal du <?php echo date('D, d:m:Y');?></h3>
         <form action="" method="post">
-            <div class="form-group">
-                <label for="heure">Heures</label>
-                <input type="text" name="heures" id="heure" placeholder="Heure..." class="form-control">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Date">Date</label>
+                    <input type="date" name="date" id="Date" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="heure">Heures</label>
+                    <input type="text" name="heures" id="heure" placeholder="Heure..." class="form-control">
+                </div>
             </div>
             <div class="form-group">
                 <label for="cours">cours</label>

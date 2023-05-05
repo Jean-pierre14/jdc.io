@@ -16,7 +16,7 @@
                 </p>
                 <p>
                     <strong>Fait a Gisenyi le </strong>
-                    <span>23-04-2023 </span>
+                    <span>05-05-2023 </span>
                 </p>
             </div>
             <div class="col flex align-items-center">
@@ -25,7 +25,7 @@
                     <small>Annee scolaire: 2022 - 2023</small>
                 </div>
                 <div class="logoSchool">
-                    <img src="" alt="Logo" />
+                    <img src="https://www.ecoleisoko.com/wp-content/uploads/2017/08/Logo.jpg" alt="Logo" />
                 </div>
             </div>
         </div>
