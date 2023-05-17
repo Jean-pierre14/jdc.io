@@ -7,8 +7,8 @@
 
     if(isset($_POST['action'])){
 
-        if($_POST['action'] === 'postJournal'){
-            
+        if($_POST['action'] === 'postJournal') {
+
             $jour = mysqli_real_escape_string($con, trim(htmlentities($_POST['jour'])));
             $cours = mysqli_real_escape_string($con, trim(htmlentities($_POST['cours'])));
             $lecon = mysqli_real_escape_string($con, trim(htmlentities($_POST['lecon'])));

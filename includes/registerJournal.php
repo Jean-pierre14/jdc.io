@@ -4,29 +4,59 @@
         <form action="" method="post">
             <?php require_once("./config/indexConfig.php");?>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="Date">Date</label>
-                    <input type="date" name="date" id="Date" class="form-control">
+                <div class="form-group col-md-4">
+                    <label for="jour">Jour</label>
+                    <select name="jour" id="jour" class="form-control">
+                        <option value="">-- Selection --</option>
+                        <option value="Lundi">Lundi</option>
+                        <option value="Mardi">Mardi</option>
+                        <option value="Mercredi">Mercredi</option>
+                        <option value="Jeudi">Jeudi</option>
+                        <option value="Vendredi">Vendredi</option>
+                    </select>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="heure">Heures</label>
-                    <input type="text" name="heures" id="heure" placeholder="Heure..." class="form-control">
+                <div class="form-group col-md-4">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" placeholder="Fait a Gisenyi..." class="form-control" />
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="cours">cours</label>
-                <input type="text" name="cours" id="cours" placeholder="Cours..." class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="lecon">Lecon</label>
-                <textarea name="lecon" id="lecon" placeholder="Lecon" class="form-control"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="Communiquer">Communiquer</label>
-                <textarea name="Communiquer" id="Communiquer" placeholder="Communiquer" class="form-control"></textarea>
+                <div class="form-group col-md-4">
+                    <div class="form-group">
+                        <label for="teacher">Enseignant</label>
+                        <input type="text" name="teacher" id="teacher" placeholder="Enseignant" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group col-md-10"></div>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success btn-md">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+    <div class="card card-body my-3 shadow-sm">
+        <form action="" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="cours">cours</label>
+                    <input type="text" name="cours" id="cours" placeholder="Cours..." class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="lecon">Lecon</label>
+                    <input type="text" name="lecon" id="lecon" placeholder="Lecon" class="form-control" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="lecon">Heure</label>
+                    <textarea name="lecon" id="lecon" placeholder="Lecon" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <label for="Communiquer">Communiquer</label>
+                <textarea name="Communiquer" id="Communiquer" placeholder="Communiquer" class="form-control"></textarea>
+            </div>
+            <div class="form-group col-md-3">
+                <button class="btn btn-warning btn-lg">Ajouter</button>
+            </div>
+            <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-success btn-lg btn-block">Enregistrer</button>
             </div>
         </form>
     </div>
