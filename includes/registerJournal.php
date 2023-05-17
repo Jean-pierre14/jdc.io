@@ -2,6 +2,7 @@
     <div class="card card-body shadow-sm">
         <h3>Journal du <?php echo date('D, d:m:Y');?></h3>
         <form action="" method="post">
+            <?php require_once("./config/indexConfig.php");?>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="Date">Date</label>
