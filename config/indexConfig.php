@@ -32,4 +32,23 @@
             print $output;
         }
 
+        if($_POST['action'] === 'myFormTwo'){
+            
+            $cours = mysqli_real_escape_string($con, htmlentities(trim($_POST['cours'])));
+            $lecon = mysqli_real_escape_string($con, htmlentities(trim($_POST['lecon'])));
+            $semaine_id = mysqli_real_escape_string($con, htmlentities(trim($_POST['semaine_id'])));
+            $heure = mysqli_real_escape_string($con, htmlentities(trim($_POST['heure'])));
+            $communiquer = mysqli_real_escape_string($con, htmlentities(trim($_POST['communiquer'])));
+
+            if(empty($cours) || empty($lecon) || empty($heure)){
+                $output = "Les champs sont vide";
+            }else{
+                
+                $sql = mysqli_query($con, "INSERT INTO lecon_tb(cours, lecon, semaine_id) VALUES('$cours', '$lecon', $semaine_id)");
+
+                if($sql){$output = 'success';}else{$output= 'error esql';}
+            }
+            print $output;
+        }
+
     }
