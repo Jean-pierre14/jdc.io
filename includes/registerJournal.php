@@ -1,7 +1,9 @@
 <div class="col-md-12">
+
     <div class="card card-body shadow-sm">
         <h3>Journal du <?php echo date('D, d:m:Y');?></h3>
-        <form action="" method="post">
+
+        <form action="" method="post" id="myFormOne">
             <?php require_once("./config/indexConfig.php");?>
             <div class="form-row">
                 <div class="form-group col-md-4">
@@ -31,7 +33,10 @@
                 <button type="submit" class="btn btn-success btn-md">Enregistrer</button>
             </div>
         </form>
+
     </div>
+
+
     <div class="card card-body my-3 shadow-sm">
         <form action="" method="post">
             <div class="form-row">
@@ -61,3 +66,27 @@
         </form>
     </div>
 </div>
+
+<script>
+const myFormOne = document.querySelector("#myFormOne")
+
+myFormOne.onsubmit = (event) => {
+    event.preventDefault()
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./config/indexConfig.php", true)
+    xhr.onload = () => {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response;
+                if (data === 'success') {
+                    myFormOne.reset()
+                }
+            }
+        }
+    }
+
+    let formData = new FormData(myFormOne)
+    xhr.send(formData)
+}
+</script>
