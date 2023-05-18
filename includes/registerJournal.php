@@ -4,7 +4,7 @@
         <h3>Journal du <?php echo date('D, d:m:Y');?></h3>
 
         <form action="" method="post" id="myFormOne">
-            <?php require_once("./config/indexConfig.php");?>
+            <input type="hidden" name="action" value="myFormOne" class="form-control">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="jour">Jour</label>
@@ -74,16 +74,24 @@ myFormOne.onsubmit = (event) => {
     event.preventDefault()
 
     let xhr = new XMLHttpRequest();
+
     xhr.open("POST", "./config/indexConfig.php", true)
+
     xhr.onload = () => {
+
         if (xhr.readyState == XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response;
+
                 if (data === 'success') {
                     myFormOne.reset()
+                } else {
+                    console.log(data);
                 }
+
             }
         }
+
     }
 
     let formData = new FormData(myFormOne)
