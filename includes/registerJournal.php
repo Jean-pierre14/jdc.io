@@ -53,7 +53,7 @@
                         <label for="lecon">Lecon</label>
                         <textarea name="lecon" id="lecon" placeholder="Lecon" class="form-control"></textarea>
                     </div>
-                    <div class="form-group" id="Semaine_id">
+                    <div class="form-group Semaine_id" id="">
                         <h4 class="display-5">Chargemet...</h4>
                     </div>
                     <div class="form-group">
@@ -73,8 +73,16 @@
             </div>
         </div>
         <div class="col-md-7">
+            <div class="card card-body m-3">
+                <form action="" method="post" id="ResultsFilter">
+                    <input type="hidden" name="action" value="" class="form-control">
+                    <div class="form-group" id="Semaine_id">
+                        <h4 class="display-5">Chargemet...</h4>
+                    </div>
+                </form>
+            </div>
             <div id="results" class="">
-                <h2 class="display-2">Results</h2>
+                <h2 class="display-2">Chargement...</h2>
             </div>
         </div>
     </div>
@@ -90,6 +98,22 @@ function Semaine() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 let data = xhr.response;
+                document.querySelector(".Semaine_id").innerHTML = data;
+            }
+        }
+    }
+    xhr.send();
+}
+
+function filter() {
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "./config/getSemaine.php", true);
+
+    xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                let data = xhr.response;
                 document.querySelector("#Semaine_id").innerHTML = data;
             }
         }
@@ -97,7 +121,9 @@ function Semaine() {
     xhr.send();
 }
 
+
 function Init() {
+    filter();
     Semaine();
 }
 
@@ -169,4 +195,24 @@ myFormTwo.onsubmit = (event) => {
     let formData = new FormData(myFormTwo)
     xhr.send(formData)
 }
+
+function Results() {
+
+    let xhr = new XMLHttpRequest()
+
+    xhr.open("POST", "./config/indexConfig.php", true)
+    xhr.onload = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+
+            if (xhr.status === 200) {
+                let data = xhr.response;
+                document.querySelector("#results").innerHTML = data
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xhr.send(`action=${action}`);
+}
+Results()
 </script>

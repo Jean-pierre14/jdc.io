@@ -51,4 +51,8 @@
             print $output;
         }
 
+        if($_POST['action'] === 'resultsData'){
+            print "Data";
+        }
+
     }
