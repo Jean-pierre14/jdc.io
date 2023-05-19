@@ -75,144 +75,17 @@
         <div class="col-md-7">
             <div class="card card-body m-3">
                 <form action="" method="post" id="ResultsFilter">
-                    <input type="hidden" name="action" value="" class="form-control">
+                    <input type="hidden" name="action" value="ResultsFilter" class="form-control">
                     <div class="form-group" id="Semaine_id">
                         <h4 class="display-5">Chargemet...</h4>
                     </div>
                 </form>
             </div>
-            <div id="results" class="">
+            <div id="resultsData" class="">
                 <h2 class="display-2">Chargement...</h2>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-function Semaine() {
-    let xhr = new XMLHttpRequest();
-
-    xhr.open("GET", "./config/getSemaine.php", true);
-
-    xhr.onload = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                let data = xhr.response;
-                document.querySelector(".Semaine_id").innerHTML = data;
-            }
-        }
-    }
-    xhr.send();
-}
-
-function filter() {
-    let xhr = new XMLHttpRequest();
-
-    xhr.open("GET", "./config/getSemaine.php", true);
-
-    xhr.onload = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                let data = xhr.response;
-                document.querySelector("#Semaine_id").innerHTML = data;
-            }
-        }
-    }
-    xhr.send();
-}
-
-
-function Init() {
-    filter();
-    Semaine();
-}
-
-function Cours() {
-    return "Cours";
-}
-
-Init()
-
-const myFormOne = document.querySelector("#myFormOne")
-
-myFormOne.onsubmit = (event) => {
-    event.preventDefault()
-
-    let xhr = new XMLHttpRequest();
-
-    xhr.open("POST", "./config/indexConfig.php", true)
-
-    xhr.onload = () => {
-
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-
-                let data = xhr.response;
-
-                if (data === 'success') {
-                    myFormOne.reset()
-                    Init()
-                } else {
-                    console.log(data);
-                }
-
-            }
-        }
-
-    }
-
-    let formData = new FormData(myFormOne)
-    xhr.send(formData)
-}
-
-const myFormTwo = document.querySelector("#myFormTwo")
-
-myFormTwo.onsubmit = (event) => {
-    event.preventDefault()
-    let xhr = new XMLHttpRequest();
-
-    xhr.open("POST", "./config/indexConfig.php", true)
-
-    xhr.onload = () => {
-
-        if (xhr.readyState == XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-
-                let data = xhr.response;
-
-                if (data === 'success') {
-                    myFormTwo.reset()
-                    Init();
-                } else {
-                    console.log(data);
-                }
-
-            }
-        }
-
-    }
-
-    let formData = new FormData(myFormTwo)
-    xhr.send(formData)
-}
-
-function Results() {
-
-    let xhr = new XMLHttpRequest()
-
-    xhr.open("POST", "./config/indexConfig.php", true)
-    xhr.onload = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-
-            if (xhr.status === 200) {
-                let data = xhr.response;
-                document.querySelector("#results").innerHTML = data
-            }
-        }
-    }
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xhr.send(`action=${action}`);
-}
-Results()
-</script>
+<script src="./public/js/api.routes.js"></script>
