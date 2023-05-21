@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-body my-3">
+            <form action="" id="myForm" method="post">
+              <div id="child">
+                <div class="form-group">
+                  <label for="cours">Cours</label>
+                  <input
+                    type="text"
+                    name="cours0"
+                    id="cours"
+                    placeholder="Cours"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="lecon">Lecon</label>
+                  <input
+                    type="text"
+                    name="lecon0"
+                    id="lecon"
+                    placeholder="Lecon"
+                    class="form-control"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group btn-group">
+                <button type="button" id="Ajouter" class="btn btn-info btn-sm">
+                  Ajouter
+                </button>
+                <button
+                  type="submit"
+                  id="register"
+                  class="btn btn-success btn-sm"
+                >
+                  Enregistrer
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-8" id="results">
+          <h3 class="display-5">Chargement...</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      let i = 0;
+      $("#Ajouter").click(function () {
+        $("#child").append(`
+            <div class="form-group">
+                <label for="cours">Cours</label>
+                <input
+                  type="text"
+                  name="cours${i + 1}"
+                  id="cours"
+                  placeholder="Cours"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="lecon">Lecon</label>
+                <input
+                  type="text"
+                  name="lecon${i + 1}"
+                  id="lecon"
+                  placeholder="Lecon"
+                  class="form-control"
+                />
+              </div>
+        `);
+      });
+
+      const myForm = document.querySelector("#myForm");
+
+      myForm.onsubmit = (e) => {
+        e.preventDefault();
+        let xhr = new XMLHttpRequest();
+        xhr.open(POST, "./test.php", true);
+        xhr.onload = () => {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+              let data = xhr.response;
+              $("#results").innerHTML = data;
+            }
+          }
+        };
+
+        const formData = new FormData(myForm);
+        xhr.send(formData);
+      };
+    });
+  </script>
+</html>
